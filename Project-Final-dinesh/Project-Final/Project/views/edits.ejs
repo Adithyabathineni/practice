@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="heading">
+      <img src="" alt="" srcset="" />
+      <h1>Content Management System</h1>
+      <nav>
+        <ul>
+          <a href="/addpage">
+            <li>Add Page</li>
+          </a>
+          <a href="editpage">
+            <li>Edit Pages</li>
+          </a>
+          <a href="logout">
+            <li>Logout</li>
+          </a>
+        </ul>
+      </nav>
+    </div>
+    <main>
+      <h2>Add Page</h2>
+      <form action="/success" method="post">
+        <label for="pageTitle">Page Title:</label>
+        <input type="text" name="pageTitle" id="pagetitle" />
+        <label for="heroImage">Hero Image</label>
+        <!-- <input type="text" name="heroImage" id="heroimage" /> -->
+        <input type="file" id="heroImage" name="heroImage" />
+        <button>Browse...</button>
+        <input type="text" name="pagebody" id="pagebody" />
+        <input type="submit" value="Submit" />
+      </form>
+    </main>
+    
+    <%- include('./partials/footer'); %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/tinymce/jquery.tinymce.min.js"></script>
+    <script src="js/tinymce/tinymce.min.js"></script>
+    <script>
+      tinymce.init({
+        selector: "#pagebody",
+        height: 500,
+      });
+    </script>
+  </body>
+</html>

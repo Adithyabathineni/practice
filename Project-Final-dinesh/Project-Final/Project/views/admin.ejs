@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMS - Admin - Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+
+    <%- include('./partials/header'); %>
+
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <!-- <li><a>About</a></li>
+          <li><a>Team</a></li>
+          <li><a>Contact</a></li> -->
+          <% page.forEach(function(page) { %>
+            <li><a href="/content/<%= page.id %>">
+                <%= page.pageTitle %>
+              </a></li>
+            <% }) %>
+        </ul>
+      </nav>
+
+      <div>
+        <form action="/welcome" method="post" class="login-form">
+          <h2>Login</h2>
+          <div>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <%- include('./partials/footer'); %>
+
+  </div>
+
+</body>
+
+</html>

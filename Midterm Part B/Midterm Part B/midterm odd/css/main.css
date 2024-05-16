@@ -1,0 +1,76 @@
+body{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    border: 2px solid blue;
+    font: 16px/1.5 Arial, sans-serif;
+  }
+  .structural{
+    margin: 10px;
+    padding: 10px;
+  }
+  h1{
+    color:brown;
+    font-size: 45px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial;
+  }
+  h2{
+    color: orange;
+    font-size: 24px;
+  }
+  main {
+    height: 70vh;
+  }
+  img {
+    border: 2px solid white;
+    width: 90%;
+    height: 80%;
+  }
+figure {
+    background-color: orange;
+    width: 45%;
+    height: 60%;
+    margin: auto;
+    padding: 10px;
+  }
+  
+ #figure1{
+    float: left;
+  }
+  
+  #figure2{
+    float: right;
+  }
+  
+section {
+    clear: both;
+  }
+  p{
+    color: brown;
+    width: 400px;
+  }
+  
+  figcaption {
+    font-weight: bold;
+    font-size: 14px;
+    color: red;
+    padding: 5px;
+  }
+  a {
+    color: purple;
+  }
+  a:hover {
+    color: red;
+  }
+  
+ul {
+    list-style: square;
+    line-height: 1.6;
+    }
+  header, footer {
+    background-color: yellow;
+    text-align: center;
+  }
+   

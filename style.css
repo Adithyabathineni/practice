@@ -1,0 +1,43 @@
+
+h1{
+    background-color: blue;
+    color: aqua;
+    float: none;
+    text-align: center;
+    border:0px;
+}
+nav{
+    background-color: aqua;
+    border:10px;
+
+}
+nav li{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 0px;
+}
+aside{
+    float: left;
+    padding: 10px 10px 10px 0px;
+    border: 3px solid black;
+}
+main{
+    padding: 10px 10px 10px 20px;
+    float: left;
+
+}
+h2{
+    float: left;
+}
+img{
+    width: 500px;
+    height: 500px;
+}
+footer{
+    clear: both;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+}

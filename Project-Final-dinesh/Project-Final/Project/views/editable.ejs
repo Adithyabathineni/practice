@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMS - Admin - Edit Page</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <%- include('./partials/admin-header'); %>
+
+      <main>
+        <h2>Edit Page</h2>
+        <form action="/editsuccess/<%= page.id %>" method="post">
+          <div>
+            <label for="pageTitle">Page Title:</label>
+            <input type="text" name="pageTitle" id="pagetitle" value="<%= page.pageTitle %>" />
+          </div>
+          <div>
+            <label for="heroImage">Hero Image</label>
+            <input type="text" name="heroImage" id="heroimage" value="<%= page.heroImage %>" />
+            <button>Browse...</button>
+          </div>
+          <div>
+            <input type="text" name="pagebody" id="pagebody" value="<%- page.pagebody %>" />
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </main>
+
+      <%- include('./partials/footer'); %>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/jquery.tinymce.min.js"></script>
+        <script>
+          tinymce.init({
+            selector: "#pagebody",
+            height: 500,
+          });
+        </script>
+  </div>
+
+</body>
+
+</html>

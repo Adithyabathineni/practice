@@ -1,0 +1,148 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab_6
+{
+   class Employee
+    {
+        // Fields
+        private int empid;
+        private int storeid;
+        private string lastname;
+        private string department;
+        private double salary;
+
+        // Properties
+        public int EmpId
+        {
+            get { return empid; }
+            set { empid = value; }
+        }
+
+        public int StoreId
+        {
+            get { return storeid; }
+            set { storeid = value; }
+        }
+
+        public string LastName
+        {
+            get { return lastname; }
+            set { lastname = value; }
+        }
+
+        public string Department
+        {
+            get { return department; }
+            set { department = value; }
+        }
+
+        public double Salary
+        {
+            get { return salary; }
+            set { salary = value; }
+        }
+
+        // Parameterless Constructor
+        public Employee()
+        {
+            empid = 101;
+            storeid = 1;
+            lastname = "Smith";
+            department = "Sales";
+            salary = 0;
+        }
+        // Parameterized Constructor
+
+        public Employee(int empid, int storeid, string lastname, string department, double salary)
+        {
+            this.empid = empid;
+            this.storeid = storeid;
+            this.lastname = lastname;
+            this.department = department;
+            this.salary = salary;
+        }
+
+        // Method to calculate salary
+        public double CalcSalary(double hours, double payrate)
+        {
+            return hours * payrate;
+        }
+
+        // Override ToString method
+        public override string ToString()
+        {
+            return $"Employee ID: {empid}\nStore ID: {storeid}\nLast Name: {lastname}\nDepartment: {department}\nSalary: {salary}\n";
+        }
+    }
+
+    class Manager : Employee
+    {
+        // Field specific to Manager
+        private double bonus;
+
+        // Property for bonus
+        public double Bonus
+        {
+            get { return bonus; }
+            set { bonus = value; }
+        }
+
+        // Constructor
+        public Manager(int empId, int storeId, string lastName, string department, double salary, double bonus)
+            : base(empId, storeId, lastName, department, salary)
+        {
+            this.bonus = bonus;
+        }
+
+        // Overriding CalcSalary method for Manager
+        public new double CalcSalary(double hours, double payrate)
+        {
+            // Manager's salary calculation including bonus
+            return base.CalcSalary(hours, payrate) + bonus;
+        }
+
+        // Override ToString method for Manager
+        public override string ToString()
+        {
+            return $"Employee ID: {EmpId}\nStore ID: {StoreId}\nLast Name: {LastName}\nDepartment: {Department}\nSalary: {Salary}\nBonus: {bonus}\n";
+        }
+    }
+
+    class EmployeeTest
+    {
+        static void Main(string[] args)
+        {
+            // Instantiate Employee object
+            Employee employee = new Employee();
+           
+            // Test CalcSalary method for Employee
+            double hours = 40;
+            double payrate = 25;
+            double salary = employee.CalcSalary(hours, payrate);
+            Console.WriteLine("Employee Salary: " + salary);
+            Console.WriteLine();
+
+            employee.Salary = salary;
+
+            // Print Employee's information
+            Console.WriteLine(employee);
+
+            // Instantiate Manager object
+            Manager manager = new Manager(201, 2, "Johnson", "Marketing", 7000, 3000);
+
+            // Test CalcSalary method for Manager
+            salary = manager.CalcSalary(hours, payrate);
+            Console.WriteLine("Manager Salary: " + salary);
+
+            Console.WriteLine();
+
+            // Print Manager's information
+            Console.WriteLine(manager.ToString());
+        }
+    }
+
+}

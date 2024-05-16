@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <img src="images/logo.png" alt="Logo" height="100px">
+      <h1 class="site-header">Content Management Website</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="addpage">Add Page</a></li>
+        <li><a href="editpage">Edit Pages</a></li>
+        <li><a href="logout">Logout</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h2>Add Page</h2>
+      <% if (typeof editPageSuccessful !=='undefined' ){ %>
+        <p>
+          <%= editPageSuccessful.bodyMessage %>
+        </p>
+        <% } %>
+          <% if (typeof addPageSuccessful !=='undefined' ) { %>
+            <p>
+              <%= addPageSuccessful.bodyMessage %>
+            </p>
+            <% } %>
+              <% if (typeof deletePageSuccessful !=='undefined' ) { %>
+                <p>
+                  <%= deletePageSuccessful.bodyMessage %>
+                </p>
+                <% } %>
+                  <!-- <p>addPageSuccessful.bodyMessage</p> -->
+                  <!-- <p>editPageSuccessful.bodyMessage</p> -->
+    </main>
+
+    <%- include('./partials/footer'); %>
+
+  </div>
+
+</body>
+
+</html>

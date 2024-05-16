@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMS - Admin - Edit Pages</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <%- include('./partials/admin-header'); %>
+
+    <main>
+      <h2 class="text-center">Edit Pages</h2>
+
+      <table id="pages-table">
+        <tr>
+          <th>Page</th>
+          <th>Manage</th>
+          <th>Manage</th>
+        </tr>
+        <% page.forEach(function(page) { %>
+          <tr>
+            <td>
+              <%= page.pageTitle %>
+            </td>
+            <td><a href="/editpage/<%= page.id %>">Edit</a></td>
+            <td><a href="/deletepage/<%= page.id %>">Delete</a></td>
+          </tr>
+          <% }) %>
+      </table>
+    </main>
+
+    <%- include('./partials/footer'); %>
+
+  </div>
+
+</body>
+
+</html>
