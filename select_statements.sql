@@ -283,3 +283,133 @@ SELECT Title, PubDate
 FROM JL_BOOKS
 WHERE Category = 'COMPUTER' AND PubDate LIKE '2005-%';
 
+-- use sql shell
+--Verify Connection to MySQL Shell and Show Schema
+SELECT DATABASE();
+
+--Create Agency Collection
+db.createCollection("Agency");
+
+--. Insert Documents into Agency Collection
+
+var collection = db.getCollection('Agency');
+
+collection.add({
+    "AGENCY NAME": "ZenDesk",
+    "Headquarters": "Montreal",
+    "REGISTERED YEAR": 1994,
+    "CLIENT": "US Navy"
+}).execute();
+
+collection.add({
+    "AGENCY NAME": "Thomas Cook",
+    "Headquarters": "Toronto",
+    "REGISTERED YEAR": 1998,
+    "CLIENT": "Sun Microsystems"
+}).execute();
+
+collection.add({
+    "AGENCY NAME": "Softchoice",
+    "Headquarters": "WhitBy",
+    "REGISTERED YEAR": 1972,
+    "CLIENT": "Bell Labs"
+}).execute();
+
+collection.add({
+    "AGENCY NAME": "Global Staffing",
+    "Headquarters": "London",
+    "REGISTERED YEAR": 1945,
+    "CLIENT": "IBM"
+}).execute();
+
+collection.add({
+    "AGENCY NAME": "Hays",
+    "Headquarters": "Burlington",
+    "REGISTERED YEAR": 1991,
+    "CLIENT": "CWI"
+}).execute();
+
+collection.add({
+    "AGENCY NAME": "Avanade",
+    "Headquarters": "Toronto",
+    "REGISTERED YEAR": 2001,
+    "CLIENT": "Bell Labs"
+}).execute();
+
+
+--. Display First Three Agency Documents Sorted by REGISTERED YEAR Descending (Screen Capture 4)
+
+var collection = db.getCollection('Agency');
+var result = collection.find()
+    .sort('REGISTERED YEAR DESC')
+    .limit(3)
+    .execute();
+result.fetchAll().forEach(function(row) {
+    print(JSON.stringify(row));
+});
+
+--Display Agency Documents Where Headquarters is Toronto, Sorted by Agency Name Ascending (Screen Capture 5)
+
+var collection = db.getCollection('Agency');
+var result = collection.find('Headquarters = :hq')
+    .bind('hq', 'Toronto')
+    .sort('AGENCY NAME ASC')
+    .execute();
+result.fetchAll().forEach(function(row) {
+    print(JSON.stringify(row));
+});
+
+--Create PROJECTS and EMPLOYEES Tables and Insert Data (Screen Capture 6)
+CREATE TABLE PROJECTS (
+    PROJECT_ID INT PRIMARY KEY,
+    PROJECT_NAME VARCHAR(50)
+);
+
+INSERT INTO PROJECTS (PROJECT_ID, PROJECT_NAME) VALUES
+(70, 'ENGAGEMENT'),
+(90, 'LOYALTY'),
+(110, 'UBER EATS'),
+(130, 'TRAINING PARTNERS'),
+(150, 'HSBC'),
+(170, 'BELL');
+CREATE TABLE EMPLOYEES (
+    EMPLOYEE_ID INT PRIMARY KEY,
+    First_Name VARCHAR(50),
+    Last_Name VARCHAR(50),
+    PROJECT_ID INT,
+    FOREIGN KEY (PROJECT_ID) REFERENCES PROJECTS(PROJECT_ID)
+);
+
+INSERT INTO EMPLOYEES (EMPLOYEE_ID, First_Name, Last_Name, PROJECT_ID) VALUES
+(101, 'Harpar', 'Smith', 170),
+(102, 'Ken', 'Trint', 90),
+(103, 'Lev', 'Hannah', 170),
+(104, 'Alex', 'Mourgos', 90),
+(105, 'Keven', 'James', 150);
+
+--. Create vw_ProjectsWithMultipleEmployees View with Encryption (Screen Capture 7)
+CREATE VIEW vw_ProjectsWithMultipleEmployees
+WITH ENCRYPTION
+AS
+SELECT 
+    e.First_Name,
+    e.Last_Name,
+    e.PROJECT_ID,
+    p.PROJECT_NAME
+FROM EMPLOYEES e
+JOIN PROJECTS p ON e.PROJECT_ID = p.PROJECT_ID
+WHERE e.PROJECT_ID IN (
+    SELECT PROJECT_ID
+    FROM EMPLOYEES
+    GROUP BY PROJECT_ID
+    HAVING COUNT(*) > 1
+);
+
+
+
+
+
+
+
+
+
