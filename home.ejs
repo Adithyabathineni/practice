@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 40px;
+                background-color: greenyellow;
+                border-bottom: 1px solid #ccc;
+
+            }
+            .nav{
+                display: flex;
+                gap: 40px;
+            }
+            .nav a{
+                text-decoration: none;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+            }
+            .nav a:hover{
+                color: blue;
+            }
+            .main-layout{
+                display: flex;
+                height: calc(100vh - 80px);
+            }
+            .sidebar{
+                width: 10%;
+                background-color: white;
+                color: greenyellow;
+                padding: 30px 20px;
+                display: flex;
+                flex-direction: column;
+                border-right: solid #ccc;
+                gap: 20px;
+                
+            }
+            .sidebar a{
+                color: greenyellow;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 18px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid #444;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .sidebar a:hover{
+                color: blue;
+            }
+            .content {
+                  width: 85%;
+                padding: 40px;
+                }
+
+                .file-input {
+                width: 35%; /* Set the file input width to 35% */
+                margin-top: 20px;
+                margin-bottom: 20px;
+                font-size: 16px;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            .upload-btn {
+                background-color: greenyellow;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            .upload-btn:hover {
+                background-color: blue;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1><%= title %></h1>
+            <nav class="nav">
+                <a href="/home">Home</a>
+                <a href="/services">Services</a>
+                <a href="/contact">Contact</a>
+            </nav>
+
+        </div>
+        <div class="main-layout">
+            <div class="sidebar">
+                <a href="/home">Upload</a>
+                <a href="/storage">Storage</a>
+                <a href="/settings">Settings</a>
+                <a href="/profile">Profile</a>
+            </div>
+            <div class="content">
+                <p>This is your EJS-powered homepage with the sidebar below the top navbar.</p>
+                <input type="file" class="file-input" id="fileInput" />
+                <button class="upload-btn">Upload</button>
+
+
+            
+            
+            </div>
+        </div>
+
+
+        
+    </body>
+</html>
